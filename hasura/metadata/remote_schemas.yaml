@@ -1,0 +1,6 @@
+- name: Remote Schema Apollo
+  definition:
+    url: http://graphql:9000/graphql
+    timeout_seconds: 60
+    customization: {}
+  comment: ""

@@ -1,0 +1,48 @@
+actions:
+  - name: SumScoreForUser
+    definition:
+      kind: ""
+      handler: http://graphql:9000/sum-score-for-users
+      request_transform:
+        method: GET
+        query_params: {}
+        request_headers:
+          add_headers: {}
+          remove_headers:
+            - content-type
+        template_engine: Kriti
+        version: 2
+  - name: create_Users
+    definition:
+      kind: synchronous
+      handler: http://graphql:9000/create-user
+      forward_client_headers: true
+      request_transform:
+        method: POST
+        query_params: {}
+        template_engine: Kriti
+        version: 2
+  - name: showUsers
+    definition:
+      kind: ""
+      handler: http://graphql:9000/show-users
+      request_transform:
+        method: GET
+        query_params: {}
+        request_headers:
+          add_headers: {}
+          remove_headers:
+            - content-type
+        template_engine: Kriti
+        version: 2
+custom_types:
+  enums: []
+  input_objects:
+    - name: UserInput
+  objects:
+    - name: SumScoreOutput
+    - name: showUsersOutput
+    - name: ScoreOutput
+    - name: SampleOutput
+    - name: CreateUserOutput
+  scalars: []

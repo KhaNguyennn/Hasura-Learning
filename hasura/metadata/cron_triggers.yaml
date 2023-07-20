@@ -1,0 +1,7 @@
+- name: UserStats
+  webhook: http://graphql:9000/user-stats
+  schedule: 0 23 * * *
+  include_in_metadata: true
+  payload:
+    op: INSERT
+  comment: ""

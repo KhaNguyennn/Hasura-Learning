@@ -1,0 +1,50 @@
+type Query {
+  SumScoreForUser: [SumScoreOutput]
+}
+
+type Mutation {
+  create_Users(
+    credentials: UserInput!
+  ): CreateUserOutput
+}
+
+type Query {
+  showUsers: [showUsersOutput]
+}
+
+input UserInput {
+  id: Int!
+  username: String!
+  password: String!
+}
+
+type SumScoreOutput {
+  id: Int!
+  username: String
+  password: String
+  sumScore: Int
+}
+
+type showUsersOutput {
+  id: Int
+  username: String
+  password: String
+  scores: [ScoreOutput]!
+}
+
+type ScoreOutput {
+  id: Int!
+  course: String!
+  score: String!
+}
+
+type SampleOutput {
+  accessToken: String!
+}
+
+type CreateUserOutput {
+  id: Int!
+  username: String!
+  password: String!
+}
+

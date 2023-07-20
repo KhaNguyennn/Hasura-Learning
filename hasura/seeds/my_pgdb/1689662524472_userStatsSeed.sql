@@ -1,0 +1,10 @@
+SET check_function_bodies = false;
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('b9ced099-38d6-4302-a28d-c200bbf3c401', 3, 'khanguyentuan', 0, '2023-07-17 03:28:06.521467+00', '2023-07-17 03:28:08.926317+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('ee8d19bb-a4f9-4582-80d2-f381d1af01ca', 2, 'KhaTuan', 10, '2023-07-17 03:28:06.545978+00', '2023-07-17 03:28:08.926317+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('c185b7b4-7882-4df9-9b17-c18369b8aaa1', 4, 'ntth', 0, '2023-07-17 03:28:06.546893+00', '2023-07-17 03:28:08.926317+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('ad502d08-180a-4753-b023-e57b2236d66f', 1, 'Khaaaaaaa', 19, '2023-07-17 03:28:06.547783+00', '2023-07-17 03:28:08.926317+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('2d0f16bf-1736-4f0b-a7b6-e1cccbff3bb4', 3, 'khanguyentuan', 0, '2023-07-17 08:58:57.75648+00', '2023-07-17 08:58:57.75648+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('5d564376-04bd-4c25-bd48-6c5ced0c4d04', 1, 'Khaaaaaaa', 19, '2023-07-17 08:58:57.756667+00', '2023-07-17 08:58:57.756667+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('17753683-93bd-4c4e-8b01-88250f88e22b', 2, 'KhaTuan', 10, '2023-07-17 08:58:57.757947+00', '2023-07-17 08:58:57.757947+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('8b8410fb-c289-41c2-9326-7c2858a940c0', 4, 'ntth', 0, '2023-07-17 08:58:57.7602+00', '2023-07-17 08:58:57.7602+00');
+INSERT INTO public.user_stats (id, user_id, name, sum_score, created_at, updated_at) VALUES ('0423bd2b-d20b-40eb-8f77-5da6748fcdf6', 10, 'kha', 0, '2023-07-17 08:58:57.761377+00', '2023-07-17 08:58:57.761377+00');

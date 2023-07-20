@@ -1,0 +1,29 @@
+table:
+  name: scores
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      foreign_key_constraint_on: user_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - course
+        - id
+        - score
+        - user_id
+        - created_at
+        - updated_at
+      filter: {}
+event_triggers:
+  - name: send_notification
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      interval_sec: 10
+      num_retries: 0
+      timeout_sec: 60
+    webhook: http://graphql:9000/send-notification

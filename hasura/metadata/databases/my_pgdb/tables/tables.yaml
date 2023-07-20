@@ -1,0 +1,4 @@
+- "!include public_course.yaml"
+- "!include public_scores.yaml"
+- "!include public_user_stats.yaml"
+- "!include public_users.yaml"
