@@ -13,13 +13,13 @@ services:
       POSTGRES_DB: my_pgdb
   graphql:
     build:
-      context: /home/kha/Documents/graphql-apollo-server/Aggregate_Hasura
+      context: /home/kha/Documents/GitHub/Hasura-Learning
       dockerfile: Dockerfile_dev
       network: host
     ports:
       - "9092:9000"
     volumes:
-      - /home/kha/Documents/graphql-apollo-server/Aggregate_Hasura:/usr/src/graphql
+      - /home/kha/Documents/GitHub/Hasura-Learning:/usr/src/graphql
   graphql-engine:
     image: hasura/graphql-engine:v2.29.0
     ports:
