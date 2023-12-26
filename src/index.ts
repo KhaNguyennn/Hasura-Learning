@@ -17,6 +17,9 @@ import { auth } from 'express-oauth2-jwt-bearer';
 import { UserStatsModel } from '../models/user_stats';
 import { UUID, UUIDV1, UUIDV4 } from 'sequelize';
 import authRoute from '../routes/auth';
+import nodemailer from 'nodemailer';
+import Mail from 'nodemailer';
+
 const main = async () => {
 
 	
@@ -89,8 +92,71 @@ const main = async () => {
 			console.log(error);
 			
 		}
-	})
+	});
 
+// 	async function downloadFile(url: string): Promise<Buffer> {
+//     return new Promise((resolve, reject) => {
+//         https.get(url, response => {
+//             let data: Uint8Array[] = [];
+//             response.on('data', chunk => {
+//                 data.push(chunk);
+//             });
+//             response.on('end', () => {
+//                 const buffer = Buffer.concat(data);
+//                 resolve(buffer);
+//             });
+//         }).on('error', error => {
+//             reject(error);
+//         });
+//     });
+// }
+	async function downloadFileToBuffer(url: string): Promise<Buffer> {
+		try {
+			const response = await axios.get<ArrayBuffer>(url, {
+				responseType: 'arraybuffer', // Get response as ArrayBuffer
+			});
+			return Buffer.from(response.data); // Convert ArrayBuffer to Buffer
+		} catch (error) {
+			throw error;
+		}
+	}
+	app.post('/send-email', async (req: Request, res: Response) => {
+		try {
+			const pdfBuffer: Buffer = await downloadFileToBuffer('https://storage.googleapis.com/daikin-dev.appspot.com/export%2Fth-true-milk-booking-receipt%2FM1100064%20-%20TH%20True%20Milk%20-%202023-11-27%2017%3A14%3A56.pdf?GoogleAccessId=daikin-dev%40appspot.gserviceaccount.com&Expires=32510160000&Signature=XIRiIWdLCmPO2b7uCiTQTZqw%2BOcjWZuX1jlFwFvVDa3cQaTcl7D4KQCUAwSx85ovFxZF8vgWCPZRjPv4PbOLmJ%2F0Wq89E9j3VG7b5BUGtxeb2qUx13O4iKqEWhIZFbwBwdn6mE47hq4IlIzGmW1XG9UaAZG3EYgxEuJNYQjqIodoZAF3W8%2B%2BE%2Bo8ox4FjZpdyD2k%2B7jkXyQl6zW4UtyRsPcEuK66IBV7IC8iLJbDkW79gsvalXOhE2J5Jm%2FcB%2BUI8PNu7wSPOEd3SqnRAGHkdXJu9bAYTSruYAXrnmjb9pUb2wzirfShPkWBQXGshENLxUpMcbiV63sQT3q1%2BFAfew%3D%3D');
+
+			const transporter = nodemailer.createTransport({
+				host: 'smtp.gmail.com',
+				port: 465,
+				secure: true,
+				auth: {
+						user: 'no-reply@pangalink.net',
+						pass: 'Kvtja286'
+				},
+				debug: true
+			});
+			const email: Mail.SendMailOptions = {
+				from: 'Kha Nguyen',
+				to: '20521427@gm.uit.edu.vn',
+				subject: 'Hello',
+				attachments: [
+					{
+						filename: "attachment.pdf",
+						contentType: "application/pdf",
+						content: pdfBuffer
+					}
+				]
+			}
+			await transporter.sendMail(email, function(error, info){
+				if(error){
+						return console.log(error);
+				}
+				console.log('Message sent: ' + info.response);
+				res.send("message sent");
+		});
+		} catch (error) {
+			console.error(error);
+		}
+	});
 	app.get('/sum-score-for-users', async (req: Request, res: Response) => {
 		try {
 			const users = await UserModel.findAll({});
